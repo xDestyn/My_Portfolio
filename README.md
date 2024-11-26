@@ -1,1 +1,3 @@
-# My_Portfolio
+# My Portfolio
+
+This is my online resume.
