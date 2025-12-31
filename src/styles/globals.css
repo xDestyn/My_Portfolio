@@ -10,19 +10,79 @@ body {
     margin: 0;
     min-width: 320px;
     min-height: 100vh;
-    background-color: #111827; /* This ensures dark background */
+    background-color: #111827;
+    scroll-behavior: smooth;
 }
 
-/* Additional custom styles */
-.fade-in {
-    animation: fadeIn 0.5s ease-in;
+/* Scroll reveal animations */
+.scroll-reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
 
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
+.scroll-reveal.revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Disable animations for users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    .scroll-reveal {
         opacity: 1;
+        transform: none;
+        transition: none;
     }
+    
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Card hover effects (desktop only) */
+@media (hover: hover) and (pointer: fine) {
+    .card-hover {
+        transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    }
+    
+    .card-hover:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.3), 0 8px 10px -6px rgb(0 0 0 / 0.3);
+        border-color: rgb(74 222 128 / 0.5);
+    }
+}
+
+/* Terminal glow effect */
+.terminal-glow {
+    box-shadow: 0 0 20px rgba(74, 222, 128, 0.1);
+}
+
+/* Touch target optimization for mobile */
+.touch-target {
+    min-height: 44px;
+    min-width: 44px;
+}
+
+/* Mobile-specific optimizations */
+@media (max-width: 768px) {
+    .card-hover {
+        transform: none;
+    }
+    
+    .terminal-glow {
+        box-shadow: 0 0 10px rgba(74, 222, 128, 0.08);
+    }
+}
+
+/* Smooth scrolling for sections */
+html {
+    scroll-padding-top: 80px;
+}
+
+/* Focus states for accessibility */
+*:focus-visible {
+    outline: 2px solid rgb(74 222 128);
+    outline-offset: 2px;
 }
