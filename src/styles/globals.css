@@ -3,86 +3,151 @@
 @tailwind utilities;
 
 :root {
-    color-scheme: dark;
+  color-scheme: dark;
 }
 
 body {
-    margin: 0;
-    min-width: 320px;
-    min-height: 100vh;
-    background-color: #111827;
-    scroll-behavior: smooth;
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background-color: #111827;
+  scroll-behavior: smooth;
 }
 
 /* Scroll reveal animations */
 .scroll-reveal {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  opacity: 0;
+  transform: translateY(30px);
+  transition:
+    opacity 0.6s ease-out,
+    transform 0.6s ease-out;
 }
 
 .scroll-reveal.revealed {
-    opacity: 1;
-    transform: translateY(0);
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* Disable animations for users who prefer reduced motion */
 @media (prefers-reduced-motion: reduce) {
-    .scroll-reveal {
-        opacity: 1;
-        transform: none;
-        transition: none;
-    }
-    
-    * {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-    }
+  .scroll-reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
 
 /* Card hover effects (desktop only) */
 @media (hover: hover) and (pointer: fine) {
-    .card-hover {
-        transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
-    }
-    
-    .card-hover:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.3), 0 8px 10px -6px rgb(0 0 0 / 0.3);
-        border-color: rgb(74 222 128 / 0.5);
-    }
+  .card-hover {
+    transition:
+      transform 0.2s ease,
+      box-shadow 0.2s ease,
+      border-color 0.2s ease;
+  }
+
+  .card-hover:hover {
+    transform: translateY(-4px);
+    box-shadow:
+      0 20px 25px -5px rgb(0 0 0 / 0.3),
+      0 8px 10px -6px rgb(0 0 0 / 0.3);
+    border-color: rgb(74 222 128 / 0.5);
+  }
 }
 
 /* Terminal glow effect */
 .terminal-glow {
-    box-shadow: 0 0 20px rgba(74, 222, 128, 0.1);
+  box-shadow: 0 0 20px rgba(74, 222, 128, 0.1);
 }
 
 /* Touch target optimization for mobile */
 .touch-target {
-    min-height: 44px;
-    min-width: 44px;
+  min-height: 44px;
+  min-width: 44px;
 }
 
 /* Mobile-specific optimizations */
 @media (max-width: 768px) {
-    .card-hover {
-        transform: none;
-    }
-    
-    .terminal-glow {
-        box-shadow: 0 0 10px rgba(74, 222, 128, 0.08);
-    }
+  .card-hover {
+    transform: none;
+  }
+
+  .terminal-glow {
+    box-shadow: 0 0 10px rgba(74, 222, 128, 0.08);
+  }
 }
 
 /* Smooth scrolling for sections */
 html {
-    scroll-padding-top: 80px;
+  scroll-padding-top: 80px;
 }
 
 /* Focus states for accessibility */
 *:focus-visible {
-    outline: 2px solid rgb(74 222 128);
-    outline-offset: 2px;
+  outline: 2px solid rgb(74 222 128);
+  outline-offset: 2px;
+}
+
+/* Field Note prose styles */
+.field-note-content {
+  @apply text-gray-300 leading-relaxed;
+}
+
+.field-note-content h2 {
+  @apply text-2xl font-bold text-gray-100 mt-12 mb-4;
+}
+
+.field-note-content h3 {
+  @apply text-xl font-semibold text-gray-200 mt-8 mb-3;
+}
+
+.field-note-content p {
+  @apply mb-6;
+}
+
+.field-note-content ul,
+.field-note-content ol {
+  @apply mb-6 ml-6 space-y-2;
+}
+
+.field-note-content li {
+  @apply text-gray-300;
+}
+
+.field-note-content code {
+  @apply px-2 py-0.5 bg-gray-800 text-green-400 rounded text-sm font-mono;
+}
+
+.field-note-content pre {
+  @apply p-4 bg-gray-900 border border-gray-800 rounded-lg overflow-x-auto mb-6;
+}
+
+.field-note-content pre code {
+  @apply p-0 bg-transparent;
+}
+
+.field-note-content strong {
+  @apply text-gray-100 font-semibold;
+}
+
+.field-note-content a {
+  @apply text-green-500 hover:text-green-400 underline decoration-green-500/30 underline-offset-2 transition-colors;
+}
+
+.field-note-content blockquote {
+  @apply border-l-4 border-green-500 pl-4 italic text-gray-400 my-6;
+}
+
+/* Line clamp utilities */
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
